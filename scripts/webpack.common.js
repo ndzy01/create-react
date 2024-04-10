@@ -9,6 +9,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.mjs', '.js', '.json', '.jsx'],
+    alias: {
+      '@': path.resolve(__dirname, '../src'), // 设置别名 @ 指向 src 目录
+    },
   },
   module: {
     rules: [

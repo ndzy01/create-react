@@ -1,8 +1,8 @@
 import * as React from 'react';
-import './index.less';
-import testImg from './test.png';
+import '@/index.less';
+import testImg from '@/test.png';
 import { observer } from 'mobx-react-lite';
-import { useStores } from './store';
+import { useStores } from '@/store';
 
 const App: React.FC = () => {
   const { articles } = useStores();

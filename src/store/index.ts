@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
-import { setupStores } from './setupStores';
-import { Articles } from '../model/articles';
+import { setupStores } from '@/store/setupStores';
+import { Articles } from '@/model/articles';
 
 export class RootStore {
   loading: {
