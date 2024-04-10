@@ -1,8 +1,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import App from './App';
+import { withStores } from './store';
 
-const root = ReactDOM.createRoot(document.getElementById('app')!);
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 
-// v18 的新方法
-root.render(<App />);
+const Main = withStores(() => {
+  return <App />;
+});
+
+root.render(<Main />);

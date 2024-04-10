@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transition Example</title>
+    <style>
+      :root {
+        --transition-property: height;
+        --transition-duration: 0.5s;
+        --transition-timing-function: ease-out;
+      }
+
+      .element {
+        width: 100px;
+        height: 50px;
+        background-color: lightblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition-property: var(--transition-property);
+        transition-duration: var(--transition-duration);
+        transition-timing-function: var(--transition-timing-function);
+      }
+
+      .element:hover {
+        height: 100px;
+      }
+
+      .process-bar {
+        width: 100%; /* 初始进度条宽度 */
+        height: 10px; /* 进度条高度 */
+        background-color: #3498db; /* 进度条背景色 */
+        animation: progress 1s linear infinite; /* 应用名为 progress 的动画，持续1秒，线性变化，无限循环 */
+      }
+
+      @keyframes progress {
+        0% {
+          width: 0; /* 初始进度为0% */
+        }
+        100% {
+          width: 100%; /* 最终进度为100% */
+        }
+      }
+
+      .btn-hover {
+        background-color: #3498db;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        font-size: 16px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .btn-hover:hover {
+        animation: btnHover 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+      }
+
+      @keyframes btnHover {
+        50% {
+          background-color: #f39c12;
+          color: #000000;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="element">Hover over me</div>
+    <div class="process-bar"></div>
+    <button class="btn-hover">Hover Me</button>
+  </body>
+</html>
