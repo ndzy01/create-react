@@ -16,6 +16,14 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/, // 针对CSS文件应用loader
+        use: [
+          'style-loader', // 将CSS以<style>标签的形式注入到HTML
+          'css-loader', // 解析CSS文件后，使用import加载，并返回CSS代码
+          'postcss-loader', // 处理CSS中的@import 和 url()，使用Tailwind
+        ],
+      },
+      {
         test: /.(jsx?)|(tsx?)$/,
         exclude: /node_modules/,
         use: {
