@@ -33,22 +33,11 @@ module.exports = merge(common, {
   },
   optimization: {
     splitChunks: {
-      chunks: 'all',
-      minSize: 100 * 1000, // 生成chunk的最小体积（以字节为单位）
-      maxSize: 200 * 1000, // 最大chunk体积
-      minChunks: 1, // 分割前必须共享模块的最小chunks数
-      maxAsyncRequests: 6, // 最大异步请求数
-      maxInitialRequests: 4, // 入口点的最大并行请求数
-      automaticNameDelimiter: '~',
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
-          priority: -10,
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true,
+          name: 'vendors',
+          chunks: 'all',
         },
       },
     },
