@@ -32,6 +32,26 @@ module.exports = merge(common, {
     ],
   },
   optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 100 * 1000, // 生成chunk的最小体积（以字节为单位）
+      maxSize: 200 * 1000, // 最大chunk体积
+      minChunks: 1, // 分割前必须共享模块的最小chunks数
+      maxAsyncRequests: 6, // 最大异步请求数
+      maxInitialRequests: 4, // 入口点的最大并行请求数
+      automaticNameDelimiter: '~',
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
     minimizer: [
       // 在 webpack@5 中，你可以使用 `...` 语法来扩展现有的 minimizer（即 `terser-webpack-plugin`），将下一行取消注释
       // `...`,
@@ -48,7 +68,8 @@ module.exports = merge(common, {
       skipWaiting: true,
     }),
     new MiniCssExtractPlugin({
-      filename: 'assets/css/[hash:8].css', // 将css单独提测出来放在assets/css 下
+      filename: 'assets/css/[name].css',
+      chunkFilename: 'assets/css/[id].css',
     }),
   ],
 });
